@@ -198,14 +198,20 @@ void	draw_minimap_grid(t_game *game, int start_row, int start_col);
 
 int		close_window(t_game *game);
 void	free_game(t_game *game);
+void	load_textures(t_game *game);
 void	free_map(t_game *game);
 void	free_textures(t_game *game);
 void	free_mlx(t_game *game);
 
 void	raycasting(t_game *game);
+void	dda_step(t_game *game, t_ray *r);
+void	compute_wall(t_game *game, t_ray *r);
 void	draw_vertical_line(t_img *img, int x, int y_start, int y_end, int color);
 void	draw_textured_wall(t_game *g, int x, int d_start, int d_end,
 			int line_h, int tex_id, int tex_x, int is_door, double perp_dist);
+int		apply_fog(t_game *g, int color, double perp_dist);
+int		apply_sunny_brighten(int color);
+int		apply_door_tint(int color);
 void	draw_textured_floor(t_game *g, int x, int draw_end,
 			double ray_dir_x, double ray_dir_y);
 void	draw_textured_ceiling(t_game *g, int x, int draw_start,
@@ -223,8 +229,11 @@ char	*trim_newline(char *line);
 char	*skip_spaces(char *s);
 int		parse_rgb(char *s, int *out);
 int		parse_identifier(t_game *game, char *line, int *got);
+int		parse_tex_identifier(t_game *game, char *line, int *got);
 int		is_map_line(char *line);
 void	init_parse_state(t_game *game, int *got);
+int		process_read_line(int *phase, t_game *game, char *line,
+			int *got, char **map_lines, int *map_count);
 int		read_file_loop(int fd, t_game *game, int *got,
 			char **map_lines, int *map_count);
 int		build_game_map(t_game *game, char **map_lines, int map_count);
@@ -247,6 +256,7 @@ char	*ft_strdup(char *s);
 int		ft_atoi(char *s);
 
 char	*get_next_line(int fd);
+char	*copy_to_line(char *output_line, char *buffer);
 
 # endif
 

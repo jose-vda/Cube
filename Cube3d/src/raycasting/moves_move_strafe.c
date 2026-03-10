@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_move.c                                       :+:      :+:    :+:   */
+/*   moves_move_strafe.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-vda <jose-vda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -50,39 +50,34 @@ static void	check_key_and_exit_at(t_game *game, double new_x, double new_y)
 		game->exit_reached = 1;
 }
 
-void	check_key_and_exit(t_game *game, double new_x, double new_y)
-{
-	check_key_and_exit_at(game, new_x, new_y);
-}
-
-void	do_move_forward(t_game *game, t_player *p, double speed)
+void	do_strafe_left(t_game *game, t_player *p, double speed)
 {
 	int	mx;
 	int	my;
 
-	mx = (int)(p->x + p->dir_x * speed);
+	mx = (int)(p->x - p->plane_x * speed);
 	my = (int)p->y;
 	if (is_walkable(game, my, mx))
-		p->x += p->dir_x * speed;
+		p->x -= p->plane_x * speed;
 	mx = (int)p->x;
-	my = (int)(p->y + p->dir_y * speed);
+	my = (int)(p->y - p->plane_y * speed);
 	if (is_walkable(game, my, mx))
-		p->y += p->dir_y * speed;
+		p->y -= p->plane_y * speed;
 	check_key_and_exit_at(game, p->x, p->y);
 }
 
-void	do_move_back(t_game *game, t_player *p, double speed)
+void	do_strafe_right(t_game *game, t_player *p, double speed)
 {
 	int	mx;
 	int	my;
 
-	mx = (int)(p->x - p->dir_x * speed);
+	mx = (int)(p->x + p->plane_x * speed);
 	my = (int)p->y;
 	if (is_walkable(game, my, mx))
-		p->x -= p->dir_x * speed;
+		p->x += p->plane_x * speed;
 	mx = (int)p->x;
-	my = (int)(p->y - p->dir_y * speed);
+	my = (int)(p->y + p->plane_y * speed);
 	if (is_walkable(game, my, mx))
-		p->y -= p->dir_y * speed;
+		p->y += p->plane_y * speed;
 	check_key_and_exit_at(game, p->x, p->y);
 }

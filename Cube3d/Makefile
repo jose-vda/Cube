@@ -28,25 +28,43 @@ CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror $(INCLUDE) -g
 RM			=	rm -f
 SRCS		=	src/main.c \
+				src/main_load.c \
 				src/init_mlx.c \
 				src/free_resources.c \
+				src/free_resources_tex.c \
 				src/utils.c \
 				src/utils2.c \
 				src/parsing/parser.c \
 				src/parsing/parser_utils.c \
 				src/parsing/parser_ident.c \
+				src/parsing/parser_ident_tex.c \
 				src/parsing/parser_map.c \
+				src/parsing/parser_map_spawn.c \
+				src/parsing/parser_map_validate.c \
 				src/parsing/parser_free.c \
 				src/parsing/parser_loop.c \
+				src/parsing/parser_loop_read.c \
+				src/parsing/parser_loop_build.c \
 				src/raycasting/renderization.c \
+				src/raycasting/renderization_draw.c \
+				src/raycasting/renderization_effects.c \
 				src/raycasting/minimap.c \
 				src/raycasting/raycasting.c \
+				src/raycasting/raycasting_dda.c \
+				src/raycasting/raycasting_wall.c \
 				src/raycasting/ray_draw.c \
+				src/raycasting/ray_draw_fog.c \
+				src/raycasting/ray_draw_floor.c \
+				src/raycasting/ray_draw_ceiling.c \
 				src/raycasting/moves.c \
+				src/raycasting/moves_keys.c \
 				src/raycasting/moves_door.c \
+				src/raycasting/moves_door_toggle.c \
 				src/raycasting/moves_move.c \
+				src/raycasting/moves_move_strafe.c \
 				src/raycasting/moves_rot.c \
-				src/raycasting/get_next_line.c
+				src/raycasting/get_next_line.c \
+				src/raycasting/get_next_line_utils.c
 
 OBJS		=	$(SRCS:.c=.o)
 
