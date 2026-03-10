@@ -1,0 +1,11 @@
+NO ./textures/color_stone.xpm
+SO ./textures/color_stone.xpm
+EA ./textures/color_stone.xpm
+WE ./textures/wood.xpm
+
+F 60,60,60
+C 120,120,180
+
+111111
+1N0D01
+111111

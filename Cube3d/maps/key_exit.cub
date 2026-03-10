@@ -1,0 +1,18 @@
+NO ./textures/color_stone.xpm
+SO ./textures/color_stone.xpm
+EA ./textures/color_stone.xpm
+WE ./textures/wood.xpm
+
+W2 ./textures/wood.xpm
+W3 ./textures/color_stone.xpm
+
+CT ./textures/ceiling.xpm
+
+F 51,51,51
+C 85,85,85
+
+111111111
+1N00K0P01
+111D11111
+1X0000001
+111111111
